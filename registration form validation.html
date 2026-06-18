@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-</head>
 <body>
-    <h2>Registration Form</h2>
 
-    <form onsubmit="return checkData()">
-        <input type="text" id="userName" placeholder="Enter Name">
-        <br><br>
+<form onsubmit="return check()">
 
-        <input type="email" id="userEmail" placeholder="Enter Email">
-        <br><br>
+    Name:
+    <input type="text" id="name">
+    <p id="n" style="color:red"></p>
 
-        <input type="password" id="userPass" placeholder="Enter Password">
-        <br><br>
+    Email:
+    <input type="text" id="email">
+    <p id="e" style="color:red"></p>
 
-        <button type="submit">Register</button>
-    </form>
+    Password:
+    <input type="password" id="password">
+    <p id="p" style="color:red"></p>
 
-    <script>
-        function checkData() {
-            let n = document.getElementById("userName").value.trim();
-            let e = document.getElementById("userEmail").value.trim();
-            let p = document.getElementById("userPass").value;
+    <input type="submit" value="Submit">
 
-            if (n === "" || e === "" || p === "") {
-                alert("Please fill all fields");
-                return false;
-            }
+</form>
 
-            if (p.length < 8) {
-                alert("Password should contain at least 8 characters");
-                return false;
-            }
+<script>
+function check() {
 
-            if (!e.includes("@") || !e.includes(".")) {
-                alert("Please enter a valid email");
-                return false;
-            }
+    let valid = true;
 
-            alert("Registration Successful");
-            return true;
-        }
-    </script>
+    if (document.getElementById("name").value == "") {
+        document.getElementById("n").innerHTML = "Fill this field first";
+        valid = false;
+    } else {
+        document.getElementById("n").innerHTML = "";
+    }
+
+    if (document.getElementById("email").value == "") {
+        document.getElementById("e").innerHTML = "Fill this field first";
+        valid = false;
+    } else {
+        document.getElementById("e").innerHTML = "";
+    }
+
+    if (document.getElementById("password").value == "") {
+        document.getElementById("p").innerHTML = "Fill this field first";
+        valid = false;
+    } else {
+        document.getElementById("p").innerHTML = "";
+    }
+
+    return valid;
+}
+</script>
+
 </body>
 </html>
